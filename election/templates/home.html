@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home</title>
+    <style>
+        .m1 {
+            text-align: center;
+            font-family: "Times New Roman", Times, serif;
+        }
+        body {
+            background-color: pink;
+            
+        }
+        h1 {
+            color: blue;
+            background-color: yellow;
+            text-align: center;
+            font-family: "Times New Roman", Times, serif;
+        }
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Voting System</h1>
+    <ul class="m1">
+        {% for election1 in election %}
+            <li>
+                <h2>{{ election1.title }}</h2>
+                <p>{{ election1.description }}</p>
+                <a href="{% url 'vote' election1.id %}">Vote</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="button-container">
+        <a href="{% url 'login' %}" class="button">Login</a>
+        <a href="{% url 'register' %}" class="button">Register</a>
+        <a href="{% url 'logout' %}" class="button">Logout</a>
+    </div>
+</body>
+</html>
